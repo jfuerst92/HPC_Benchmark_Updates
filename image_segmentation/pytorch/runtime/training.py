@@ -46,9 +46,9 @@ def train(flags, model, train_loader, val_loader, loss_fn, score_fn, device, cal
     model.to(device)
     loss_fn.to(device)
     if is_distributed:
-        model = torch.nn.parallel.DistributedDataParallel(model,
-                                                          device_ids=[flags.local_rank],
-                                                          output_device=flags.local_rank)
+        #model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[flags.local_rank], output_device=flags.local_rank)
+        #CPU only, no need for local rank
+        model = torch.nn.parallel.DistributedDataParallel(model)
 
     is_successful = False
     diverged = False
