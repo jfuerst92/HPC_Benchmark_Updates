@@ -1,4 +1,4 @@
-import os
+import os 
 from math import ceil
 from mlperf_logging import mllog
 from mlperf_logging.mllog import constants
@@ -46,7 +46,8 @@ def main():
     flags.seed = worker_seed
     flags.shuffling_seed = shuffling_seeds[0]
     model = Unet3D(1, 3, normalization=flags.normalization, activation=flags.activation)
-
+    print("NUM WORKERS========================================================================================================")
+    print(flags.num_workers)
     mllog_end(key=constants.INIT_STOP, sync=True)
     mllog_start(key=constants.RUN_START, sync=True)
     train_dataloader, val_dataloader = get_data_loaders(flags, num_shards=world_size, global_rank=local_rank)

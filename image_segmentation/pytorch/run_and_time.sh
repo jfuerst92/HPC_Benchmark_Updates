@@ -16,6 +16,7 @@ LR_WARMUP_EPOCHS=200
 DATASET_DIR="/data"
 BATCH_SIZE=2
 GRADIENT_ACCUMULATION_STEPS=1
+NUM_WORKERS=8
 
 
 if [ -d ${DATASET_DIR} ]
@@ -41,7 +42,8 @@ mllog_event(key=constants.CACHE_CLEAR, value=True)"
     --ga_steps ${GRADIENT_ACCUMULATION_STEPS} \
     --learning_rate ${LEARNING_RATE} \
     --seed ${SEED} \
-    --lr_warmup_epochs ${LR_WARMUP_EPOCHS}
+    --lr_warmup_epochs ${LR_WARMUP_EPOCHS} \
+    --num_workers ${NUM_WORKERS}
 
 	# end timing
 	end=$(date +%s)
