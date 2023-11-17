@@ -16,7 +16,7 @@ LR_WARMUP_EPOCHS=200
 DATASET_DIR="/data"
 BATCH_SIZE=2
 GRADIENT_ACCUMULATION_STEPS=1
-NUM_WORKERS=32
+NUM_WORKERS=1
 
 
 if [ -d ${DATASET_DIR} ]
@@ -34,7 +34,7 @@ mllog_event(key=constants.CACHE_CLEAR, value=True)"
 
   
   #python main.py --data_dir ${DATASET_DIR} \
-  python -m torch.distributed.launch --nproc_per_node=32 main.py --data_dir ${DATASET_DIR} \
+  python -m torch.distributed.launch --nproc_per_node=16 main.py --data_dir ${DATASET_DIR} \
     --epochs ${MAX_EPOCHS} \
     --evaluate_every ${EVALUATE_EVERY} \
     --start_eval_at ${START_EVAL_AT} \

@@ -142,5 +142,5 @@ def barrier():
     Calls all_reduce on dummy tensor and synchronizes with GPU.
     """
     if torch.distributed.is_available() and torch.distributed.is_initialized():
-        torch.distributed.all_reduce(torch.cuda.FloatTensor(1))
+        #torch.distributed.all_reduce(torch.cuda.FloatTensor(1))
         torch.cuda.synchronize()
