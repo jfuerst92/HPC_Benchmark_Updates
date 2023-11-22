@@ -35,6 +35,9 @@ def train(flags, model, train_loader, val_loader, loss_fn, score_fn, device, cal
     world_size = get_world_size()
     print("WORLD SIZE+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     print(world_size)
+    print("num threads")
+    print(torch.get_num_threads())
+    torch.set_num_threads(2)
     torch.backends.cudnn.benchmark = flags.cudnn_benchmark
     torch.backends.cudnn.deterministic = flags.cudnn_deterministic
 
