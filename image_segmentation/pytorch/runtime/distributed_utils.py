@@ -143,4 +143,5 @@ def barrier():
     """
     if torch.distributed.is_available() and torch.distributed.is_initialized():
         #torch.distributed.all_reduce(torch.cuda.FloatTensor(1))
-        torch.cuda.synchronize()
+        torch.distributed.all_reduce(torch.tensor(1, device="cpu"))
+        #torch.cuda.synchronize()
